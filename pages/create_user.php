@@ -88,7 +88,7 @@
 															<div class="col-md-6">
 																<div class="form-group form-group-default" >
 																	<label>Password</label>
-																	<input type="password" style="width: 100%;" class="form-control bg bg-light" name="password" id="password" required>
+																	<input style="width: 100%;" class="form-control bg bg-light" name="password" id="password" required>
 																</div>
 															</div>
 																											
@@ -133,7 +133,7 @@
 															<div class="col-md-6">
 																<div class="form-group form-group-default" >
 																	<label>Password</label>
-																	<input type="password" style="width: 100%;" class="form-control bg bg-light" name="edit_password" id="edit_password" required>
+																	<input style="width: 100%;" class="form-control bg bg-light" name="edit_password" id="edit_password" required>
 																</div>
 															</div>
 																											

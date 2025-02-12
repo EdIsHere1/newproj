@@ -42,15 +42,21 @@ switch ($formula) {
 		echo json_encode($row);
 		break;
 
-	case 'bank_dtls':
-		$result = $database->query_run("SELECT `code`, `name` FROM branches");
-		$supData = array();
-		while ($row = $result->fetch_assoc()) {
-			$supData[] = $row;
-		}
-		echo json_encode($supData);
+		// nothing
+	// case 'bank_dtls':
+	// 	$result = $database->query_run("SELECT `code`, `name` FROM branches");
+	// 	$supData = array();
+	// 	while ($row = $result->fetch_assoc()) {
+	// 		$supData[] = $row;
+	// 	}
+	// 	echo json_encode($supData);
+	// 	break;
+	case 'delete_':
+		$id =$_POST["id_"];
+		
+		$query = $database->query_run("DELETE FROM users WHERE id = '$id'"); 
+		echo ($query ? 'success' : 'failure');
 		break;
-
 
 	case 'add_row_newuser':
 		$username = $_POST["username_"];

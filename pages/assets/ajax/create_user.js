@@ -95,8 +95,8 @@ function user_table() {
 								  data-id="${x.id}">
 									<i class="fa fa-edit"></i>
 								</button>
-								<button class="btn btn-sm text-secondary btndelete  btn-gray btn-outline-dark mr-1" data-toggle="tooltip" data-placement="bottom" title="Delete Data"
-								  data-id="${x.id}">
+								<button class="btn btn-sm text-secondary btn_delete  btn-gray btn-outline-dark mr-1" data-toggle="tooltip" data-placement="bottom" title="Delete Data"
+								  id="${x.id}">
 									<i class="fa fa-times"></i>
 								</button>
 								
@@ -109,67 +109,66 @@ function user_table() {
         }
     })
 }
-// OLD
-$(document).on('click', '.btnchange', function (e) {
+// Delete
+$(document).on('click','.btn_delete',function(e){
 	e.preventDefault();
 
-	let id = $(this).data("id");
-	let status = $(this).data("status");
-
-	let s = (status == 'Active' ? 'Disable this Account ?' : 'Enable this Account ?');
-
 	Swal.fire({
-		title: 'Confirmation',
-		text: s,
-		icon: 'question',
+		title: 'Are you sure?',
+		icon: 'warning',
 		showCancelButton: true,
-		confirmButtonColor: '#3085d6',
+		confirmButtonColor: '#343a40',
 		cancelButtonColor: '#d33',
-		confirmButtonText: 'Yes',
-		cancelButtonText: 'No',
-		reverseButtons: true,
-	}).then((result) => {
+		confirmButtonText: 'Yes!'
+	  }).then((result) => {
 		if (result.isConfirmed) {
 			$.ajax({
-				url: "assets/php/create_user.php",
+				url:"assets/php/create_user.php",
 				method: "POST",
-				data: {
-					id: id,
-					status: status,
-					formula: 'change',
+			
+				data:{
+					id_: e.target.id,
+					formula:"delete_"
 				},
+				
 				beforeSend: () => {
+		
 				},
-				success: function (res) {
-					console.log(res);
-
+				success: function(res) {
 					switch (res) {
 						case "success":
+							$("#addnewTransact").modal("hide");
+							user_table();
 							Swal.fire({
-								title: 'Success',
-								text: 'Updated Successfully',
+								title: 'Success!',
+								text: 'Deleted Successfully',
 								icon: 'success',
-								confirmButtonClass: 'btn btn-dark btn-sm',
+								confirmButtonColor: '#3085d6',
+								confirmButtonText: 'OK',
+								allowOutsideClick: false
+							}).then(() => {
+								e.target.reset();
 							});
 							break;
-
+		
 						default:
 							Swal.fire({
 								title: 'Oops!',
 								text: res,
-								icon: 'warning',
-								confirmButtonClass: 'btn btn-warning',
+								icon: 'error',
+								confirmButtonColor: '#3085d6',
+								confirmButtonText: 'OK'
 							});
-							break;
 					}
 				},
 				error: er => {
 					console.log(er);
 				}
-			});
+			})
 		}
-	});
-});
+	  })
+
+})
 
 $(document).on('click', '.btnview', function (e) {
 	e.preventDefault();
