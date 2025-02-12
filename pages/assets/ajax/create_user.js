@@ -193,7 +193,6 @@ $(document).on('click', '.btnview', function (e) {
 			$('#edit_id').val(json.id);
 			$('#edit_username').val(json.username);
 			$('#edit_password').val(json.password);
-			$('#edit_dt_added').val(json.dt_added);
 		},
 		error: err => {
 			console.log(er);
@@ -232,12 +231,14 @@ $(document).on('submit', '#form_edit', function (e) {
 					switch (res) {
 						case "success":
 							$('#editnewuserModal').modal('hide');
-
+							user_table();
 							Swal.fire({
 								title: 'Success',
-								text: 'Bank Successfully Updated',
+								text: 'Updated Successfully',
 								icon: 'success',
-								confirmButtonClass: 'btn btn-dark btn-sm',
+								confirmButtonColor: '#3085d6',
+								confirmButtonText: 'OK',
+								allowOutsideClick: false
 							});
 							break;
 
@@ -406,5 +407,3 @@ function notify_me(title, message, status) {
 		}
 	);
 }
-
-

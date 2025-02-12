@@ -27,12 +27,11 @@ switch ($formula) {
 		break;
 
 	case 'edit_row':
-		// $id = $_POST["edit_id"];
-		// $edit_username = $_POST["edit_userame"];
-		// $edit_password = $_POST["edit_password"];
-		// $edit_dt_added = $_POST["edit_dt_added"];
+		$id = $_POST["edit_id"];
+		$edit_username = $_POST["edit_username"];
+		$edit_password = $_POST["edit_password"];
 	
-		// $query = $database->query_run("UPDATE users SET username = '$edit_username', password = '$edit_password', dt_added = '$edit_dt_added' WHERE id = '$id'");
+		$query = $database->query_run("UPDATE users SET username = '$edit_username', password = '$edit_password' WHERE id = '$id'");
 		echo ($query ? 'success' : $query);
 		break;
 

@@ -126,7 +126,7 @@
 															<div class="col-md-6">
 																<div class="form-group form-group-default">
 																	<label>Username</label>
-																	<input type="text" style="width: 100%;" class="form-control bg bg-light" name="edit_userame" id="edit_username" required>
+																	<input type="text" style="width: 100%;" class="form-control bg bg-light" name="edit_username" id="edit_username" required>
 																</div>
 															</div>
 															
